@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="topnav">
+        <a>Home</a> 
+        <a class="active">Prediction</a>
+      </div>
+    <div class="main">
+    <h1>ทำนายผลผลิตการเกษตร</h1>
+    <div id="anychart-embed-countries-thailand" class="anychart-embed anychart-embed-countries-thailand">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-map.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+        <script src="https://cdn.anychart.com/geodata/2.2.0/countries/thailand/thailand.js"></script>
+        <div id="ac_style_countries-thailand" style="display:none;">
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        </div>
+        <div class="button-group">
+            <button id="phase1">ระยะเตรียมเพาะปลูก</button>
+            <button id="phase2">ระยะเพาะปลูก</button>
+            <button id="phase3">ระยะเก็บเกี่ยว</button>
+          </div>
+          <div id="scebutton">
+            <button id="sce1" >แล้ง</button>
+            <button id="sce2" >ปกติ</button>
+            <button id="sce3" >ท่วม</button>
+        </div>
+        <script>(function(){
+        function ac_add_to_head(el){
+            var head = document.getElementsByTagName('head')[0];
+            head.insertBefore(el,head.firstChild);  
+        }
+        function ac_add_link(url){
+            var el = document.createElement('link');    
+            el.rel='stylesheet';el.type='text/css';el.media='all';el.href=url;
+            ac_add_to_head(el);
+        }
+        function ac_add_style(css){
+            var ac_style = document.createElement('style');
+            if (ac_style.styleSheet) ac_style.styleSheet.cssText = css;
+            else ac_style.appendChild(document.createTextNode(css));
+            ac_add_to_head(ac_style);
+        }
+        ac_add_link('https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css');
+        ac_add_style(document.getElementById("ac_style_countries-thailand").innerHTML);
+        ac_add_style(".anychart-embed-countries-thailand{width:600px;height:500px;}");
+        })();</script>
+        <div id="container">
+            <strong><p id="col2" style="position: absolute; top: 150px; left: 850px;">สามารถเลือก ปี ระยะ สถาณการณ์ได้เลยครับ</p></strong>
+            <label for="yearsel" style="position: absolute; top: 155px; right: 785px;">Select Year:</label>
+            <select id="yearsel" style="position: absolute; top: 155px; right: 730px;">
+                <option value=0>2566</option>
+                <option value=1>2567</option>
+                <option value=2>2568</option>
+            </select>
+            <label for="find" style="position: absolute; top: 365px; left: 850px;"><strong>ต้องการทราบผลผลิตของจังหวัดใดครับ</strong></label>
+            <input type="text" id="find" style="position: absolute; top: 365px; left: 1130px;"> 
+            <button onclick="getspecific()" style="position: absolute; top: 365px; left: 1270px;">Send</button>
+            <strong><li id="output" style="position: absolute; top: 385px; left: 870px;"></li></strong>
+            <p id="summary" style="position: absolute; top: 220px; left: 850px;"><strong>ผลผลิตรวมจะแสดงเมื่อคุณเลือกระยะ:</strong></p>
+            <p id="summary_1" style="position: absolute; top: 270px; left: 850px;"><strong>จังหวัดที่มีผลผลิตมากที่สุดจะแสดงเมื่อคุณเลือกระยะ:</strong></p>
+            <p id="summary_2" style="position: absolute; top: 310px; left: 850px;"><strong>ผลผลิตเฉลี่ยจะแสดงเมื่อคุณเลือกระยะ:</strong></p>
+            <script src="script.js"></script>  
+            <style>
+                body{
+                    background-color: paleturquoise;
+                }
+            </style> 
+        </div>
+        </div>
+    </div>
+</body>
+</html>
